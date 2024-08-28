@@ -3,18 +3,24 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
     const contactData = {
         name: name,
         email: email,
+        subject:subject,
         message: message
+
     };
 
+    console.log(contactData)
     try {
-        const response = await fetch('http://localhost:8080/submit', {
+        const response = await fetch('http://localhost:8080/submit', 
+            {
             method: 'POST',
-            headers: {
+            headers: 
+            {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(contactData)
@@ -27,6 +33,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
             alert('There was an issue submitting your message. Please try again.');
         }
     } catch (error) {
-        alert('An error occurred: ' + error.message);
+        alert('An error occurred: ' + error.messaage);
     }
 });
